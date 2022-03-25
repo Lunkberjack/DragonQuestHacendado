@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Rocky Roads/tileset forest.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Rocky Roads/sign.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/Sol.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/Fuego.gd" type="Script" id=12]
+[ext_resource path="res://Kid Knight Player/Player_Idle_Run_Stop.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Caballero.gd" type="Script" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -540,6 +542,43 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "Idle"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "Walk"
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 9.5, 12 )
+
 [node name="Mundo" type="Node2D"]
 
 [node name="Water8Frames" type="Sprite" parent="."]
@@ -604,3 +643,24 @@ hframes = 6
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/Fuego/KinematicBody2D"]
 anims/Arder = SubResource( 13 )
 anims/RESET = SubResource( 14 )
+
+[node name="Caballero" type="Node2D" parent="."]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Caballero"]
+position = Vector2( 15, -6 )
+script = ExtResource( 14 )
+
+[node name="Sprite" type="Sprite" parent="Caballero/KinematicBody2D"]
+position = Vector2( 104, -10 )
+texture = ExtResource( 13 )
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Caballero/KinematicBody2D"]
+anims/Idle = SubResource( 17 )
+anims/RESET = SubResource( 16 )
+anims/Walk = SubResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caballero/KinematicBody2D"]
+position = Vector2( 104, -6 )
+shape = SubResource( 15 )
