@@ -575,9 +575,22 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "Walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 7.75, 12 )
+extents = Vector2( 7.75, 9.5 )
 
 [node name="Mundo" type="Node2D"]
 
@@ -651,10 +664,10 @@ position = Vector2( 15, -6 )
 script = ExtResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="Caballero/KinematicBody2D"]
-position = Vector2( 104, -10 )
+position = Vector2( 104, -2 )
 texture = ExtResource( 13 )
 hframes = 4
-vframes = 4
+vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Caballero/KinematicBody2D"]
 anims/Idle = SubResource( 17 )
@@ -662,5 +675,5 @@ anims/RESET = SubResource( 16 )
 anims/Walk = SubResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caballero/KinematicBody2D"]
-position = Vector2( 105.75, -6 )
+position = Vector2( 105.75, -3.5 )
 shape = SubResource( 15 )

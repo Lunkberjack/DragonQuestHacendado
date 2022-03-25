@@ -15,11 +15,11 @@ func _physics_process(delta):
 	motion.y += gravity
 	var friction = false
 	
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_key_pressed(KEY_D):
 		sprite.flip_h = true
 		animationPlayer.play("Walk")
 		motion.x = max(motion.x - moveSpeed, maxSpeed)
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_key_pressed(KEY_A):
 		sprite.flip_h = false
 		animationPlayer.play("Walk")
 		motion.x = max(motion.x - moveSpeed, -maxSpeed)
@@ -29,7 +29,7 @@ func _physics_process(delta):
 		motion.x = 0
 		
 	if is_on_floor():
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_key_pressed(KEY_SHIFT):
 			motion.y = jumpHeight
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.5)

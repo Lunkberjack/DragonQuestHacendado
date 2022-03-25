@@ -52,7 +52,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 5 )
+extents = Vector2( 7, 4.5 )
 
 [node name="Player" type="Node2D"]
 
@@ -70,5 +70,5 @@ anims/RESET = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0, 3 )
+position = Vector2( 0, 3.5 )
 shape = SubResource( 1 )
