@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Rocky Roads/tileset forest.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/Fuego.gd" type="Script" id=12]
 [ext_resource path="res://Kid Knight Player/Player_Idle_Run_Stop.png" type="Texture" id=13]
 [ext_resource path="res://Scenes/Caballero.gd" type="Script" id=14]
+[ext_resource path="res://Kid Knight Player/PlayerAttack.png" type="Texture" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -542,6 +543,9 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=19]
+resource_name = "Attack"
+
 [sub_resource type="Animation" id=17]
 resource_name = "Idle"
 length = 0.8
@@ -591,6 +595,54 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 7.75, 9.5 )
+
+[sub_resource type="Animation" id=22]
+resource_name = "Attack_special1"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Attack_specialZ"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [node name="Mundo" type="Node2D"]
 
@@ -670,6 +722,7 @@ hframes = 4
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Caballero/KinematicBody2D"]
+anims/Attack = SubResource( 19 )
 anims/Idle = SubResource( 17 )
 anims/RESET = SubResource( 16 )
 anims/Walk = SubResource( 18 )
@@ -677,3 +730,14 @@ anims/Walk = SubResource( 18 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caballero/KinematicBody2D"]
 position = Vector2( 105.75, -3.5 )
 shape = SubResource( 15 )
+
+[node name="Sprite2" type="Sprite" parent="Caballero/KinematicBody2D"]
+position = Vector2( 105, -1 )
+texture = ExtResource( 15 )
+hframes = 4
+vframes = 7
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Caballero/KinematicBody2D"]
+anims/Attack_special1 = SubResource( 22 )
+anims/Attack_specialZ = SubResource( 23 )
+anims/RESET = SubResource( 21 )
