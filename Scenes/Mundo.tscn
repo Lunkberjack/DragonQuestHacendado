@@ -577,7 +577,7 @@ tracks/0/keys = {
 resource_name = "Walk"
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 9.5, 12 )
+extents = Vector2( 7.75, 12 )
 
 [node name="Mundo" type="Node2D"]
 
@@ -662,5 +662,5 @@ anims/RESET = SubResource( 16 )
 anims/Walk = SubResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caballero/KinematicBody2D"]
-position = Vector2( 104, -6 )
+position = Vector2( 105.75, -6 )
 shape = SubResource( 15 )
