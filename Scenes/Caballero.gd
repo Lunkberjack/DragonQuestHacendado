@@ -11,7 +11,7 @@ onready var animationPlayer = $AnimationPlayer
 
 var motion = Vector2()
 
-# Cambia el sprite al sprite de ataque y reproduce la animación al derecho y al revés
+# Cambia el sprite al sprite de ataque y reproduce la animación
 func play_attack(attack_name):
 		$Sprite2.visible = true
 		$Sprite.visible = false
