@@ -56,6 +56,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_pressed("ui_accept"):
 			motion.y = jumpHeight
+			animationPlayer.play("Jump")
 		# Se puede atacar saltando, pero no ataques especiales
 		# No, este ataque no es especial, cambiar el nombre
 		if Input.is_key_pressed(KEY_CONTROL):
